@@ -1,0 +1,1 @@
+# Blender-SymmetryVertex-Selector
