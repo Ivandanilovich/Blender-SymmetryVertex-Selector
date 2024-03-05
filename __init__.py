@@ -51,10 +51,10 @@ class VertexSelector(bpy.types.Operator):
         mirror=[]
         for ind in selected_verts:
             vert_coords = verts_coords[ind]
-            vert_coords[1] *= -1 # invert Y-axis
+            vert_coords[0] *= -1 # invert X-axis
             dists = [np.sqrt(np.sum((v - vert_coords) ** 2)) if i!=ind else np.inf for (i,v) in enumerate(verts_coords)]
             min_ind = np.argmin(dists)
-            if dists[min_ind] < 1e-5:
+            if dists[min_ind] < np.inf:
                 mirror.append((ind, min_ind))
 
         for selected_idx, closest_idx in mirror:
